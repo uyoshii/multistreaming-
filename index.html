@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MultiStreaming</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #141414;
+      color: #fff;
+    }
+
+    header {
+      background-color: #000;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      color: #e50914;
+      font-size: 24px;
+    }
+
+    header button {
+      background-color: #e50914;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    header button:hover {
+      background-color: #b00610;
+    }
+
+    .hero {
+      background: #000;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    .section {
+      padding: 20px;
+    }
+
+    .section h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      border-left: 5px solid #e50914;
+      padding-left: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #1c1c1c;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00000055;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card p {
+      padding: 10px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    #login-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #000;
+    }
+
+    .login {
+      background-color: #1e1e1e;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #e50914aa;
+      max-width: 400px;
+      width: 100%;
+    }
+
+    .login h2 {
+      margin-bottom: 20px;
+      color: #fff;
+    }
+
+    .login input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: none;
+    }
+
+    .login button {
+      width: 100%;
+      padding: 10px;
+      background-color: #e50914;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Carrossel contínuo para imagem do futebol */
+    .carrossel-wrapper {
+      width: 280px;
+      height: 180px;
+      overflow: hidden;
+      position: relative;
+      margin: auto;
+      border-radius: 8px;
+    }
+
+    .carrossel-inner {
+      display: flex;
+      width: 560px; /* 2x 280px */
+      animation: scrollContinuo 10s linear infinite;
+    }
+
+    .carrossel-inner img {
+      width: 280px;
+      height: 180px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    @keyframes scrollContinuo {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-280px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="login-box">
+    <div class="login">
+      <h2>Entrar no MultiStreaming</h2>
+      <input type="email" id="email" placeholder="Email" />
+      <input type="password" id="senha" placeholder="Senha" />
+      <button onclick="fazerLogin()">Entrar</button>
+    </div>
+  </div>
+
+  <div id="conteudo" style="display:none">
+    <header>
+      <h1>MultiStreaming+</h1>
+      <button onclick="fazerLogout()">Sair</button>
+    </header>
+
+    <section class="hero">
+      <h2>🎬 Bem-vindo ao <strong> MultiStreaming</strong></h2>
+      <p>Escolha o que você quer assistir agora mesmo!</p>
+    </section>
+
+    <section class="section">
+      <h3>🍿 Filmes e Séries</h3>
+      <div class="grid">
+        <div class="card" onclick="window.location.href='https://megaflixapp.top/MegaFlix.4.5.2.apk'">
+          <img src="https://ingresso-a.akamaihd.net/b2b/production/uploads/article/image/3344/ea15e5207ff7f3673a2c767e1c732251.jpg" style="height: 180px;" alt="Filme 1">
+          <p>Servidor 1</p>
+        </div>
+        <div class="card" onclick="window.location.href='https://play.google.com/store/apps/details?id=app.tln.plus'">
+          <img src="https://cdn.ome.lt/l-FLv5rD9uBBzEOqQLq12e1FQcw=/1200x630/smart/extras/conteudos/BANNER_SITE_SERIES_2025_1MOnGkO.png" style="height: 180px;" alt="Filme 2">
+          <p>Servidor 2</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h3>⚽ Futebol</h3>
+      <div class="grid">
+        <div class="card" onclick="window.location.href='https://play.google.com/store/apps/details?id=app.futagoraa25.com'">
+          <div class="carrossel-wrapper">
+            <div class="carrossel-inner">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmY3LS3lS52KGoAzAhXSTbpf0pVeWYfVz8KvkcMvNQLX4sR5B3vIb2XJpu&s=10" alt="Futebol" />
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmY3LS3lS52KGoAzAhXSTbpf0pVeWYfVz8KvkcMvNQLX4sR5B3vIb2XJpu&s=10" alt="Futebol" />
+            </div>
+          </div>
+          <p>Baixar e Assistir</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDKiNUxsqr6E40-2C0QKRWQuDeD1hmNLuY",
+      authDomain: "sitestreaming-e71af.firebaseapp.com",
+      projectId: "sitestreaming-e71af",
+      storageBucket: "sitestreaming-e71af.appspot.com",
+      messagingSenderId: "317373695263",
+      appId: "1:317373695263:web:02bc8c6cf7c94110ebdc2a"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        document.getElementById("login-box").style.display = "none";
+        document.getElementById("conteudo").style.display = "block";
+      } else {
+        document.getElementById("login-box").style.display = "flex";
+        document.getElementById("conteudo").style.display = "none";
+      }
+    });
+
+    window.fazerLogin = function () {
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("senha").value;
+
+      signInWithEmailAndPassword(auth, email, senha)
+        .then(() => {})
+        .catch((error) => {
+          alert("Erro ao logar: " + error.message);
+        });
+    };
+
+    window.fazerLogout = function () {
+      signOut(auth).then(() => {
+        alert("Você saiu.");
+      });
+    };
+  </script>
+</body>
+</html>
