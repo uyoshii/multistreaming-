@@ -140,7 +140,6 @@
       cursor: pointer;
     }
 
-    /* Carrossel contínuo para imagem do futebol */
     .carrossel-wrapper {
       width: 280px;
       height: 180px;
@@ -152,7 +151,7 @@
 
     .carrossel-inner {
       display: flex;
-      width: 560px; /* 2x 280px */
+      width: 560px;
       animation: scrollContinuo 10s linear infinite;
     }
 
@@ -164,13 +163,120 @@
     }
 
     @keyframes scrollContinuo {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-280px);
-      }
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-280px); }
     }
+
+    /* EFEITO DE FALHA (GLITCH) */
+    .glitch {
+      position: relative;
+      display: inline-block;
+      color: white;
+      font-weight: bold;
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .glitch::before {
+      left: 2px;
+      text-shadow: -2px 0 red;
+      animation: glitch-anim-1 0.5s infinite linear alternate-reverse;
+    }
+
+    .glitch::after {
+      left: -2px;
+      text-shadow: -2px 0 blue;
+      animation: glitch-anim-2 0.5s infinite linear alternate-reverse;
+    }
+
+    @keyframes glitch-anim-1 {
+      0% { clip: rect(0, 9999px, 0, 0); }
+      10% { clip: rect(10px, 9999px, 30px, 0); }
+      20% { clip: rect(5px, 9999px, 15px, 0); }
+      30% { clip: rect(15px, 9999px, 25px, 0); }
+      100% { clip: rect(0, 9999px, 0, 0); }
+    }
+
+    @keyframes glitch-anim-2 {
+      0% { clip: rect(0, 9999px, 0, 0); }
+      10% { clip: rect(5px, 9999px, 20px, 0); }
+      20% { clip: rect(10px, 9999px, 25px, 0); }
+      30% { clip: rect(0, 9999px, 15px, 0); }
+      100% { clip: rect(0, 9999px, 0, 0); }
+    }
+    .glitch {
+  position: relative;
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  animation: glitchWrapper 5s infinite;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.glitch::before {
+  color: #f0f;
+  z-index: -1;
+  animation: glitch-anim-1 0.5s steps(2, end);
+}
+
+.glitch::after {
+  color: #0ff;
+  z-index: -2;
+  animation: glitch-anim-2 0.5s steps(2, end);
+}
+
+@keyframes glitch-anim-1 {
+  0% { transform: translate(0); opacity: 1; }
+  20% { transform: translate(-2px, -2px); }
+  40% { transform: translate(2px, 2px); }
+  60% { transform: translate(-2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); opacity: 0; }
+}
+
+@keyframes glitch-anim-2 {
+  0% { transform: translate(0); opacity: 1; }
+  20% { transform: translate(2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, -2px); }
+  80% { transform: translate(-2px, 2px); }
+  100% { transform: translate(0); opacity: 0; }
+}
+
+@keyframes glitchWrapper {
+  0%, 89% {
+    opacity: 1;
+  }
+  90%, 91% {
+    opacity: 0.95;
+  }
+  92%, 93% {
+    opacity: 1;
+  }
+  94%, 95% {
+    opacity: 0.97;
+  }
+  96%, 100% {
+    opacity: 1;
+  }
+}
   </style>
 </head>
 <body>
@@ -185,12 +291,15 @@
 
   <div id="conteudo" style="display:none">
     <header>
-      <h1>MultiStreaming+</h1>
+      <h1>
+  <img src="fotos/logom.png" style="height:70px;position:relative;top:23px">
+  <span class="glitch" data-text="ultiStreaming">ultiStreaming</span>
+</h1>
       <button onclick="fazerLogout()">Sair</button>
     </header>
 
     <section class="hero">
-      <h2>🎬 Bem-vindo ao <strong> MultiStreaming</strong></h2>
+      <h2>🎬 Bem-vindo ao <strong>MultiStreaming</strong></h2>
       <p>Escolha o que você quer assistir agora mesmo!</p>
     </section>
 
@@ -267,6 +376,8 @@
         alert("Você saiu.");
       });
     };
+
+
   </script>
 </body>
 </html>
