@@ -280,12 +280,17 @@
   </style>
 </head>
 <body>
+  
   <div id="login-box">
     <div class="login">
       <h2>Entrar no MultiStreaming</h2>
       <input type="email" id="email" placeholder="Email" />
       <input type="password" id="senha" placeholder="Senha" />
       <button onclick="fazerLogin()">Entrar</button>
+      <nav>
+  <!-- Outras opções -->
+<br>  <a href="/sobre-nos.html" style="color:white;text-decoration: none;margin-right:90px;">Sobre Nós</a> <a href="/esqueci-a-senha.html" style="color:white;text-decoration: none;margin-right:10px;">Esqueci a Senha</a>
+</nav>
     </div>
   </div>
 
@@ -296,6 +301,8 @@
   <span class="glitch" data-text="ultiStreaming">ultiStreaming</span>
 </h1>
       <button onclick="fazerLogout()">Sair</button>
+</a>
+
     </header>
 
     <section class="hero">
@@ -334,9 +341,27 @@
     </section>
   </div>
 <br> <p><strong>📨 SOLICITE A ADIÇÃO DE ALGUM FILME OU SÉRIE ABAIXO:</strong></p> <br>
-<button style= "height:32px; weight:32px;">
-  <a href="mailto:contato.multistreaming@gmail.com?subject=Solicita%C3%A7%C3%A3o%20de%20Servi%C3%A7o">SOLICITAR</a>
-</button>
+<style>
+  .botao-solicitar {
+    display: inline-block;
+    background-color: #E50914;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-family: sans-serif;
+    transition: background-color 0.3s;
+  }
+
+  .botao-solicitar:hover {
+    background-color: #B20710;
+  }
+</style>
+
+<a href="mailto:contato.multistreaming@gmail.com?subject=Solicita%C3%A7%C3%A3o%20de%20Servi%C3%A7o" class="botao-solicitar">
+  SOLICITAR
+</a>
   <!-- Firebase SDK -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
