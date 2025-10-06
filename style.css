@@ -1,0 +1,28 @@
+.carousel-auto {
+  overflow: hidden;
+  width: 100%;
+  padding: 10px 0;
+}
+
+.carousel-track {
+  display: flex;
+  width: max-content;
+  animation: scrollCarousel 20s linear infinite;
+  gap: 16px;
+}
+
+.carousel-track img {
+  height: 220px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+@keyframes scrollCarousel {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
