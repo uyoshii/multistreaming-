@@ -71,6 +71,30 @@
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: 20px;
 }
+.btn-disp {
+  padding: 12px;
+  background-color: #e50914;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.btn-disp:hover {
+  background-color: #b00610;
+}
+
+.indisponivel {
+  padding: 12px;
+  background-color: #666;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
   </style>
 </head>
 <body>
@@ -92,6 +116,33 @@
   </div>
 
   <!-- CONTEÚDO PROTEGIDO -->
+  <!-- TELA DE SELEÇÃO DE DISPOSITIVO -->
+<div id="select-device" style="
+  display:none;
+  height:100vh;
+  background:#000;
+  color:white;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+">
+  <img src="triagem.JPG" width="453px" 
+  <h2 style="margin-bottom:20px;">Vamos te ajudar, Selecione seu dispositivo</h2>
+  
+  <div style="display:grid; gap:15px; width:100%; max-width:300px;">
+    
+    <button onclick="selecionarDispositivo('TV')" class="btn-disp">TV</button>
+    <button onclick="selecionarDispositivo('Notebook')" class="btn-disp">Notebook</button>
+    <button onclick="selecionarDispositivo('Celular')" class="btn-disp">Celular</button>
+    <button onclick="selecionarDispositivo('Tablet')" class="btn-disp">Tablet</button>
+    <button onclick="selecionarDispositivo('iPhone')"class="indisponivel">iPhone</button>
+    
+  </div>
+  
+</div>
   <div id="conteudo" style="display:none;">
 
     <header>
@@ -164,10 +215,16 @@
     const auth = getAuth(app);
 
     onAuthStateChanged(auth, (user) => {
-      document.getElementById("login-box").style.display = user ? "none" : "flex";
-      document.getElementById("conteudo").style.display = user ? "block" : "none";
-    });
-
+  if (user) {
+    document.getElementById("login-box").style.display = "none";
+    document.getElementById("select-device").style.display = "flex";
+    document.getElementById("conteudo").style.display = "none";
+  } else {
+    document.getElementById("login-box").style.display = "flex";
+    document.getElementById("select-device").style.display = "none";
+    document.getElementById("conteudo").style.display = "none";
+  }
+});
     window.fazerLogin = () => {
       const emailField = document.getElementById("email").value;
 const senhaField = document.getElementById("senha").value;
@@ -177,6 +234,7 @@ const senhaField = document.getElementById("senha").value;
     };
 
     window.fazerLogout = () => signOut(auth);
+    
   </script>
 </body>
 </html>
