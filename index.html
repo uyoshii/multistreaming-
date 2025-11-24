@@ -8,336 +8,74 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Roboto', sans-serif; background-color: #141414; color: #fff; }
+    header { background-color: #000; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+    header h1 { color: #e50914; font-size: 24px; }
+    header button { background-color: #e50914; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: background 0.3s; }
+    header button:hover { background-color: #b00610; }
+    .hero { background: #000; padding: 60px 20px; text-align: center; }
+    .hero h2 { font-size: 2.5rem; margin-bottom: 10px; }
+    .hero p { font-size: 1.2rem; color: #ccc; }
+    .section { padding: 20px; }
+    .section h3 { font-size: 1.8rem; margin-bottom: 20px; border-left: 5px solid #e50914; padding-left: 10px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; }
+    .card { background-color: #1c1c1c; border-radius: 8px; overflow: hidden; cursor: pointer; box-shadow: 0 0 10px #00000055; transition: transform 0.2s; }
+    .card:hover { transform: scale(1.05); }
+    .card p { padding: 10px; font-weight: bold; text-align: center; }
 
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #141414;
-      color: #fff;
-    }
+    #login-box { display: flex; align-items: center; justify-content: center; height: 100vh; background-color: #000; }
+    .login { background-color: #1e1e1e; padding: 40px; border-radius: 10px; box-shadow: 0 0 20px #e50914aa; max-width: 400px; width: 100%; }
+    .login input { width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: none; }
+    .login button { width: 100%; padding: 10px; background-color: #e50914; border: none; border-radius: 5px; color: white; font-weight: bold; cursor: pointer; }
 
-    header {
-      background-color: #000;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+    .carrossel-wrapper { width: 280px; height: 180px; overflow: hidden; position: relative; margin: auto; border-radius: 8px; }
+    .carrossel-inner { display: flex; width: 560px; animation: scrollContinuo 10s linear infinite; }
+    .carrossel-inner img { width: 280px; height: 180px; object-fit: cover; }
 
-    header h1 {
-      color: #e50914;
-      font-size: 24px;
-    }
+    @keyframes scrollContinuo { 0% { transform: translateX(0); } 100% { transform: translateX(-280px); } }
 
-    header button {
-      background-color: #e50914;
-      color: #fff;
-      border: none;
+    .botao-solicitar {
+      display: inline-block;
+      background-color: #E50914;
+      color: white;
       padding: 10px 20px;
       border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    header button:hover {
-      background-color: #b00610;
-    }
-
-    .hero {
-      background: #000;
-      padding: 60px 20px;
-      text-align: center;
-    }
-
-    .hero h2 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      color: #ccc;
-    }
-
-    .section {
-      padding: 20px;
-    }
-
-    .section h3 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      border-left: 5px solid #e50914;
-      padding-left: 10px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: 20px;
-    }
-
-    .card {
-      background-color: #1c1c1c;
-      border-radius: 8px;
-      overflow: hidden;
-      cursor: pointer;
-      box-shadow: 0 0 10px #00000055;
-      transition: transform 0.2s;
-    }
-
-    .card:hover {
-      transform: scale(1.05);
-    }
-
-    .card p {
-      padding: 10px;
+      text-decoration: none;
       font-weight: bold;
-      text-align: center;
+      transition: background-color 0.3s;
     }
-
-    #login-box {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      background-color: #000;
-    }
-
-    .login {
-      background-color: #1e1e1e;
-      padding: 40px;
-      border-radius: 10px;
-      box-shadow: 0 0 20px #e50914aa;
-      max-width: 400px;
-      width: 100%;
-    }
-
-    .login h2 {
-      margin-bottom: 20px;
-      color: #fff;
-    }
-
-    .login input {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 5px;
-      border: none;
-    }
-
-    .login button {
-      width: 100%;
-      padding: 10px;
-      background-color: #e50914;
-      border: none;
-      border-radius: 5px;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .carrossel-wrapper {
-      width: 280px;
-      height: 180px;
-      overflow: hidden;
-      position: relative;
-      margin: auto;
-      border-radius: 8px;
-    }
-
-    .carrossel-inner {
-      display: flex;
-      width: 560px;
-      animation: scrollContinuo 10s linear infinite;
-    }
-
-    .carrossel-inner img {
-      width: 280px;
-      height: 180px;
-      object-fit: cover;
-      flex-shrink: 0;
-    }
-
-    @keyframes scrollContinuo {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-280px); }
-    }
-
-    /* EFEITO DE FALHA (GLITCH) */
-    .glitch {
-      position: relative;
-      display: inline-block;
-      color: white;
-      font-weight: bold;
-    }
-
-    .glitch::before,
-    .glitch::after {
-      content: attr(data-text);
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      overflow: hidden;
-    }
-
-    .glitch::before {
-      left: 2px;
-      text-shadow: -2px 0 red;
-      animation: glitch-anim-1 0.5s infinite linear alternate-reverse;
-    }
-
-    .glitch::after {
-      left: -2px;
-      text-shadow: -2px 0 blue;
-      animation: glitch-anim-2 0.5s infinite linear alternate-reverse;
-    }
-
-    @keyframes glitch-anim-1 {
-      0% { clip: rect(0, 9999px, 0, 0); }
-      10% { clip: rect(10px, 9999px, 30px, 0); }
-      20% { clip: rect(5px, 9999px, 15px, 0); }
-      30% { clip: rect(15px, 9999px, 25px, 0); }
-      100% { clip: rect(0, 9999px, 0, 0); }
-    }
-
-    @keyframes glitch-anim-2 {
-      0% { clip: rect(0, 9999px, 0, 0); }
-      10% { clip: rect(5px, 9999px, 20px, 0); }
-      20% { clip: rect(10px, 9999px, 25px, 0); }
-      30% { clip: rect(0, 9999px, 15px, 0); }
-      100% { clip: rect(0, 9999px, 0, 0); }
-    }
-    .glitch {
-  position: relative;
-  color: white;
-  font-weight: bold;
-  font-size: 24px;
-  animation: glitchWrapper 5s infinite;
-}
-
-.glitch::before,
-.glitch::after {
-  content: attr(data-text);
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.glitch::before {
-  color: #f0f;
-  z-index: -1;
-  animation: glitch-anim-1 0.5s steps(2, end);
-}
-
-.glitch::after {
-  color: #0ff;
-  z-index: -2;
-  animation: glitch-anim-2 0.5s steps(2, end);
-}
-
-@keyframes glitch-anim-1 {
-  0% { transform: translate(0); opacity: 1; }
-  20% { transform: translate(-2px, -2px); }
-  40% { transform: translate(2px, 2px); }
-  60% { transform: translate(-2px, 2px); }
-  80% { transform: translate(2px, -2px); }
-  100% { transform: translate(0); opacity: 0; }
-}
-
-@keyframes glitch-anim-2 {
-  0% { transform: translate(0); opacity: 1; }
-  20% { transform: translate(2px, 2px); }
-  40% { transform: translate(-2px, -2px); }
-  60% { transform: translate(2px, -2px); }
-  80% { transform: translate(-2px, 2px); }
-  100% { transform: translate(0); opacity: 0; }
-}
-
-@keyframes glitchWrapper {
-  0%, 89% {
-    opacity: 1;
-  }
-  90%, 91% {
-    opacity: 0.95;
-  }
-  92%, 93% {
-    opacity: 1;
-  }
-  94%, 95% {
-    opacity: 0.97;
-  }
-  96%, 100% {
-    opacity: 1;
-  }
-}
+    .botao-solicitar:hover { background-color: #B20710; }
   </style>
 </head>
 <body>
-  
+
+  <!-- LOGIN -->
   <div id="login-box">
     <div class="login">
-      
       <h2>Entrar na MultiStreaming</h2>
       <input type="email" id="email" placeholder="Email" />
       <input type="password" id="senha" placeholder="Senha" />
-      <button onclick="fazerLogin()" >Entrar</button>
+      <button onclick="fazerLogin()">Entrar</button>
+
       <nav>
-  <!-- Outras opções -->
-<br>  <a href="/sobre-nos.html" style="color:white;text-decoration: none;margin-right:90px;">Sobre Nós</a> <a href="/esqueci-a-senha.html" style="color:white;text-decoration: none;margin-right:1px;">Esqueci a Senha</a>
-</nav>
+        <br>
+        <a href="/sobre-nos.html" style="color:white;text-decoration: none;margin-right:90px;">Sobre Nós</a>
+        <a href="/esqueci-a-senha.html" style="color:white;text-decoration: none;">Esqueci a Senha</a>
+      </nav>
     </div>
   </div>
 
-  <div id="conteudo" style="display:none">
-    <header>
-      <h1>
-  <img src="logom.png" style="height:70px;position:relative;top:23px">
-</h1>
-      <button onclick="fazerLogout()">Sair</button>
+  <!-- CONTEÚDO PROTEGIDO -->
+  <div id="conteudo" style="display:none;">
 
+    <header>
+      <h1><img src="logom.png" style="height:70px; position:relative; top:23px"></h1>
+      <button onclick="fazerLogout()">Sair</button>
     </header>
 
-</div>
-
-<style>
-  .img-container {
-    position: relative;
-    display: inline-block;
-  }
-
-  .img-manutencao {
-    height: 500px;
-    width: 390px;
-    display: block;
-    border-radius: 0px;
-  }
-
-  .aviso {
-    position: absolute;
-    bottom: -15px; /* sobrepõe levemente o pé da imagem */
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(229, 9, 20, 0.9); /* vermelho Netflix */
-    color: white;
-    padding: 8px 29px;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 7px;
-    box-shadow: 0 0 10px #00000055;
-    white-space: nowrap;
-  }
-</style>
-  
-
     <section class="hero">
-      <h2>🎬 Bem-vindo a <span style="color: red;"><strong>MultiStreaming</strong></h2>
+      <h2>🎬 Bem-vindo a <span style="color: red;"><strong>MultiStreaming</strong></span></h2>
       <p>Escolha o que você quer assistir agora mesmo!</p>
     </section>
 
@@ -345,15 +83,15 @@
       <h3>🍿 Filmes e Séries</h3>
       <div class="grid">
         <div class="card" onclick="window.location.href='https://megaflixapp.top/'">
-          <img src="https://ingresso-a.akamaihd.net/b2b/production/uploads/article/image/3344/ea15e5207ff7f3673a2c767e1c732251.jpg" style="height: 180px;" alt="Filme 1">
+          <img src="https://ingresso-a.akamaihd.net/b2b/production/uploads/article/image/3344/ea15e5207ff7f3673a2c767e1c732251.jpg">
           <p>Servidor 1</p>
         </div>
         <div class="card" onclick="window.location.href='https://tlnapk.com/'">
-          <img src="https://cdn.ome.lt/l-FLv5rD9uBBzEOqQLq12e1FQcw=/1200x630/smart/extras/conteudos/BANNER_SITE_SERIES_2025_1MOnGkO.png" style="height: 180px;" alt="Filme 2">
-          <p> Servidor 2</p>
+          <img src="https://cdn.ome.lt/l-FLv5rD9uBBzEOqQLq12e1FQcw=/1200x630/smart/extras/conteudos/BANNER_SITE_SERIES_2025_1MOnGkO.png">
+          <p>Servidor 2</p>
         </div>
         <div class="card" onclick="window.location.href='https://netcine.si/appandroid/netcineapp25.apk'">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlj8I-hkvWAfMfOQJGMxRCypDYjPafBNr-9iHi7zYcj6jb0aeRnm55sXJC&s=10" style="height: 180px;" alt="Filme 2">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlj8I-hkvWAfMfOQJGMxRCypDYjPafBNr-9iHi7zYcj6jb0aeRnm55sXJC&s=10">
           <p>Servidor 3</p>
         </div>
       </div>
@@ -362,86 +100,58 @@
     <section class="section">
       <h3>⚽ Futebol</h3>
       <div class="grid">
-        <div class="card" onclick="window.location.href='https://play.google.com/store/apps/details?id=com.futtennium25.app&pcampaignid=web_share'">
+        <div class="card" onclick="window.location.href='https://play.google.com/store/apps/details?id=com.futtennium25.app'">
           <div class="carrossel-wrapper">
             <div class="carrossel-inner">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmY3LS3lS52KGoAzAhXSTbpf0pVeWYfVz8KvkcMvNQLX4sR5B3vIb2XJpu&s=10" alt="Futebol" />
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmY3LS3lS52KGoAzAhXSTbpf0pVeWYfVz8KvkcMvNQLX4sR5B3vIb2XJpu&s=10" alt="Futebol" />
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmY3LS3lS52KGoAzAhXSTbpf0pVeWYfVz8KvkcMvNQLX4sR5B3vIb2XJpu&s=10">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmY3LS3lS52KGoAzAhXSTbpf0pVeWYfVz8KvkcMvNQLX4sR5B3vIb2XJpu&s=10">
             </div>
           </div>
-          <p>Baixar e Assistir</p> 
-        
+          <p>Baixar e Assistir</p>
         </div>
       </div>
     </section>
-  </div>
-<br> <p><strong>📨 SOLICITE A ADIÇÃO DE ALGUM FILME OU SÉRIE ABAIXO:</strong></p> <br>
-<style>
-  .botao-solicitar {
-    display: inline-block;
-    background-color: #E50914;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    font-family: sans-serif;
-    transition: background-color 0.3s;
-  }
 
-  .botao-solicitar:hover {
-    background-color: #B20710;
-  }
-</style>
+    <br>
+    <p><strong>📨 SOLICITE A ADIÇÃO DE ALGUM FILME OU SÉRIE ABAIXO:</strong></p>
+    <br>
 
-<a href="mailto:contato.multistreaming@gmail.com?subject=Solicita%C3%A7%C3%A3o%20de%20Servi%C3%A7o" class="botao-solicitar">
-  SOLICITAR
-</a>
-  <!-- Firebase SDK -->
+    <a href="mailto:contato.multistreaming@gmail.com?subject=Solicitação" class="botao-solicitar">
+      SOLICITAR
+    </a>
+
+  </div> <!-- ✔ AGORA FECHA SÓ AQUI! -->
+
+  <!-- Firebase -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
     import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 
-    const firebaseConfig = {
+    const app = initializeApp({
       apiKey: "AIzaSyDKiNUxsqr6E40-2C0QKRWQuDeD1hmNLuY",
       authDomain: "sitestreaming-e71af.firebaseapp.com",
       projectId: "sitestreaming-e71af",
       storageBucket: "sitestreaming-e71af.appspot.com",
       messagingSenderId: "317373695263",
       appId: "1:317373695263:web:02bc8c6cf7c94110ebdc2a"
-    };
+    });
 
-    const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
     onAuthStateChanged(auth, (user) => {
-      if (user) {
-        document.getElementById("login-box").style.display = "none";
-        document.getElementById("conteudo").style.display = "block";
-      } else {
-        document.getElementById("login-box").style.display = "flex";
-        document.getElementById("conteudo").style.display = "none";
-      }
+      document.getElementById("login-box").style.display = user ? "none" : "flex";
+      document.getElementById("conteudo").style.display = user ? "block" : "none";
     });
 
-    window.fazerLogin = function () {
-      const email = document.getElementById("email").value;
-      const senha = document.getElementById("senha").value;
+    window.fazerLogin = () => {
+      const email = email.value;
+      const senha = senha.value;
 
       signInWithEmailAndPassword(auth, email, senha)
-        .then(() => {})
-        .catch((error) => {
-          alert("Erro ao logar: " + error.message);
-        });
+        .catch(err => alert("Erro ao logar: " + err.message));
     };
 
-    window.fazerLogout = function () {
-      signOut(auth).then(() => {
-        alert("Você saiu.");
-      });
-    };
-
-
+    window.fazerLogout = () => signOut(auth);
   </script>
 </body>
 </html>
