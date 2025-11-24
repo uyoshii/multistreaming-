@@ -95,6 +95,10 @@
   cursor: pointer;
   transition: 0.2s;
 }
+.disabled-disp {
+  opacity: 0.4;        /* Deixa apagado */
+  pointer-events: none; /* Impede qualquer clique */
+}
   </style>
 </head>
 <body>
@@ -137,7 +141,7 @@
     <button onclick="selecionarDispositivo('Notebook')" class="btn-disp">Notebook</button>
     <button onclick="selecionarDispositivo('Celular')" class="btn-disp">Celular</button>
     <button onclick="selecionarDispositivo('Tablet')" class="btn-disp">Tablet</button>
-    <button onclick="selecionarDispositivo('iPhone')"class="indisponivel">iPhone</button>
+    <button class="btn-disp disabled-disp" disabled>iPhone</button>
     
   </div>
   
