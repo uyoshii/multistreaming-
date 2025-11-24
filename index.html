@@ -129,7 +129,7 @@
   text-align:center;
   padding:20px;
 ">
-  <img src="triagem.JPG" width="453px" 
+  <img src="triagem.JPG" width="453px">
   <h2 style="margin-bottom:20px;">Vamos te ajudar, Selecione seu dispositivo</h2>
   
   <div style="display:grid; gap:15px; width:100%; max-width:300px;">
@@ -234,7 +234,11 @@ const senhaField = document.getElementById("senha").value;
     };
 
     window.fazerLogout = () => signOut(auth);
-    
+    window.selecionarDispositivo = (disp) => {
+  console.log("Usuário assistindo no:", disp);
+  document.getElementById("select-device").style.display = "none";
+  document.getElementById("conteudo").style.display = "block";
+};
   </script>
 </body>
 </html>
