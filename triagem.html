@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MultiStreaming</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #141414;
+      color: #fff;
+    }
+
+    header {
+      background-color: #000;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      color: #e50914;
+      font-size: 24px;
+    }
+
+    header button {
+      background-color: #e50914;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    header button:hover {
+      background-color: #b00610;
+    }
+
+    .hero {
+      background: #000;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    .section {
+      padding: 20px;
+    }
+
+    .section h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      border-left: 5px solid #e50914;
+      padding-left: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background-color: #1c1c1c;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: 0 0 10px #00000055;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card p {
+      padding: 10px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+  
+  </style>
+</head>
+<body>
+  
+
+  <div id="conteudo" style="display:none">
+    <header>
+      <h1>
+  <img src="logom.png" style="height:70px;position:relative;top:23px">
+</h1>
+      <button onclick="fazerLogout()">Sair</button>
+</a>
+
+    </header>
+
+</div>
+
+<style>
+  .img-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  .img-manutencao {
+    height: 500px;
+    width: 390px;
+    display: block;
+    border-radius: 0px;
+  }
+
+  .aviso {
+    position: absolute;
+    bottom: -15px; /* sobrepõe levemente o pé da imagem */
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(229, 9, 20, 0.9); /* vermelho Netflix */
+    color: white;
+    padding: 8px 29px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 7px;
+    box-shadow: 0 0 10px #00000055;
+    white-space: nowrap;
+  }
+  .botao {
+  background-color: #4CAF50; /* Cor de fundo */
+  border: none; /* Remover borda padrão */
+  color: white; /* Cor do texto */
+  padding: 10px 20px; /* Espaçamento interno */
+  text-align: center; /* Alinhar texto ao centro */
+  text-decoration: none; /* Remover sublinhado do link */
+  display: inline-block; /* Fazer o link se comportar como um bloco inline para padding/margin */
+  font-size: 16px; /* Tamanho da fonte */
+  cursor: pointer; /* Mudar o cursor para "mãozinha" */
+  border-radius: 4px; /* Cantos arredondados */
+}
+  .botao2 {
+  background-color: #999; /* Cor de fundo */
+  border: none; /* Remover borda padrão */
+  color: white; /* Cor do texto */
+  padding: 10px 20px; /* Espaçamento interno */
+  text-align: center; /* Alinhar texto ao centro */
+  text-decoration: none; /* Remover sublinhado do link */
+  display: inline-block; /* Fazer o link se comportar como um bloco inline para padding/margin */
+  font-size: 16px; /* Tamanho da fonte */
+  cursor: pointer; /* Mudar o cursor para "mãozinha" */
+  border-radius: 4px; /* Cantos arredondados */
+}
+ .botao3 {
+  background-color: #4CAF50; /* Cor de fundo */
+  border: none; /* Remover borda padrão */
+  color: white; /* Cor do texto */
+  padding: 10px 20px; /* Espaçamento interno */
+  text-align: center; /* Alinhar texto ao centro */
+  text-decoration: none; /* Remover sublinhado do link */
+  display: inline-block; /* Fazer o link se comportar como um bloco inline para padding/margin */
+  font-size: 16px; /* Tamanho da fonte */
+  cursor: pointer; /* Mudar o cursor para "mãozinha" */
+  border-radius: 4px; /* Cantos arredondados */
+}
+</style>
+  
+
+    <section class="hero">
+      <h2>🎬 Bem-vindo a <span style="color: red;"><strong>MultiStreaming</strong></h2>
+      <p>Selecione a opção que corresponde ao seu dispositivo</p>
+    </section>
+
+    <section class="section">
+      <h3>⚙️ Onde o filme vai ser reproduzido? ️</h3>
+      <div class="grid">
+     <a href= "index.html" class=botao>Dispositivo Android <br>
+     (Celular, Smart Tv e Tablet)</a>
+       <div class="grid">
+    <a href="" class=botao2> ❌ Dispositivo Apple <br>
+      (iPhone, iPad e SmartWatch)</a>
+        <a href="index.html" class=botao3>Notebook e PC  <br>
+    (Computadores)</a>
+       </div>
+        </div>
+       
+
+  </script>
+</body>
+</html>
