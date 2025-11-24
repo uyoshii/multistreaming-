@@ -17,7 +17,12 @@
   flex-shrink: 0;
   transition: transform 0.3s ease;
 }
-
+#select-device {
+  background: #000 url("https://i.imgur.com/0ZfV2Wz.gif") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
 @keyframes scrollCarousel {
   0% {
     transform: translateX(0);
