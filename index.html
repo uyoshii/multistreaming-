@@ -8,8 +8,46 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
+  /* Centraliza tudo */
+.container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* Imagem centralizada */
+.img-topo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+/* Bolha de mensagem */
+.bolha {
+  background: black;
+  display: inline-block;
+  padding: 15px 20px;
+  border-radius: 18px;
+  border: 1px solid #ccc;
+  position: relative;
+  max-width: 280px;
+  text-align: left;
+}
+
+/* Triângulo da bolha */
+.bolha::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 10px 10px 10px;
+  border-style: solid;
+  border-color: transparent transparent white transparent;
+}
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Roboto', sans-serif; background-color: #141414; color: #fff; }
+    body { font-family: 'Roboto', sans-serif; background-color: #141414; color: black; }
     header { background-color: #000; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
     header h1 { color: #e50914; font-size: 24px; }
     header button { background-color: #e50914; color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; transition: background 0.3s; }
@@ -132,11 +170,17 @@
   text-align:center;
   padding:20px;
 ">
-  <img src="triagem.JPG" width="453px">
-  <h2 style="margin-bottom:20px;">Vamos te ajudar, Selecione seu dispositivo</h2>
+  <img src="" width="453px">
+  <h2 style="margin-bottom:20px;"></h2>
+  <div class="container">
+  <img src="triagem.JPG" class="img-topo" alt="imagem">
   
+  <div class="bolha">
+    <p>Vamos te ajudar, Selecione seu dispositivo.</p>
+  </div>
+</div>
   <div style="display:grid; gap:15px; width:100%; max-width:300px;">
-    
+    <br>
     <button onclick="selecionarDispositivo('TV')" class="btn-disp" a href=>TV</button>
     <button onclick="selecionarDispositivo('Notebook')" class="btn-disp">Notebook</button>
     <button onclick="selecionarDispositivo('Celular')" class="btn-disp">Celular</button>
